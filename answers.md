@@ -34,7 +34,13 @@ id).
 
 # Question 5: Explain how putting this line "flash[:error] =
 # @pokemon.errors.full_messages.to_sentence" shows error messages on your form.
+`app/views/layouts/_messages.html.erb` handles flashing messages depending on
+malformed input. This file allows us to send messages to users due to a
+previous request. For example, we now can flash an error message if the name
+they provided in the previous request is empty or not unique.
 
 # Give us feedback on the project and decal below!
+Struggled a bit with routing, but was able to finish
 
 # Extra credit: Link your Heroku deployed app
+N/A

@@ -26,13 +26,13 @@ class PokemonsController < ApplicationController
   end
 
   def create
-    @pokemon = Pokemon.create(name:params[:name], level:1, health:100, trainer_id:current_trainer.id)
-    if @pokemon.save
+    @pokemon = Pokemon.create(name:params[:pokemon][:name], level:1, health:100, trainer_id:current_trainer.id)
+    if not @pokemon.name.empty? and @pokemon.save
       redirect_to "/trainers/#{current_trainer.id}"
     else
-      render "Add new pokemon!"
+      flash[:error] = @pokemon.errors.full_messages.to_sentence
+      redirect_to "/pokemons/new"
     end
   end
-
 
 end
